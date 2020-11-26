@@ -13,6 +13,7 @@ ul,ol{
 
 
 /************通用样式-end**********/
+	
 	/* 我的资料,订单列表样式 */
 		.order_list{
 				background: #FFFFFF;
@@ -21,6 +22,20 @@ ul,ol{
 				margin-top: 3%;
 				margin-bottom: 5%;
 				}
+				
+	/* 顶部固定栏Bottom_Bar */	
+		.nav_top_div{
+			height: 48px;
+			width: 100%;
+		}
+		.nav_top{
+			padding-top: 16px;
+			height: 48px;
+			position: fixed;
+			width: 100%; 
+			z-index: 2; 
+			top: 0;
+		}
 	/* 底部固定栏Bottom_Bar */
 		.Bottom_Bar_div{
 			width:100%;
