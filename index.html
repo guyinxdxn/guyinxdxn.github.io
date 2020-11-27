@@ -703,7 +703,7 @@
 			// 1.创建一个HXLHttpRequeset对象
 			var xhr =new XMLHttpRequest();
 			// 2.调用open方法打开连接
-			xhr.open('POST','http://9wm2x9.natappfree.cc/user/log');
+			xhr.open('POST','http://yg2hw6.natappfree.cc/user/log');
 			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 			// 3.发送请求
 			xhr.send('stuNumber='+login_value[0].value+'&&stuPwd='+login_value[1].value+'');
@@ -719,8 +719,8 @@
 						if(resp.code==1){
 							user_number=login_value[0].value;
 							user_phone=resp.data.phone;
-							console.log(user_phone);
 							user_name=resp.data.name;
+							user_id=resp.data.id;
 							localStorage.setItem('user_number',user_number);
 							localStorage.setItem('user_phone',user_phone);
 							localStorage.setItem('user_name',user_name);
