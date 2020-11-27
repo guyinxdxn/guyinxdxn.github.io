@@ -1,0 +1,299 @@
+
+<html lang="zh-cn">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/index.css" />
+    <title>打印模块</title>
+	<style>
+
+		/* 打印介绍界面 */
+		.printing{
+			width: 90%;
+			
+			border-radius: 15px;
+			box-shadow: 1px 3px 6px 3px rgb(232, 236, 241,0.7);
+		}
+	
+		h1{
+			text-align: center;
+		}
+		
+		.printing button{
+			margin: 10px 0 30px 0;
+			width: 125px;
+			height: 48px;
+			
+		}
+		.printing_img img{
+			width: 100%;	
+			border-top-left-radius: 20px;
+		} 
+		.printing_img div:nth-child(2) {
+			padding: 8%;
+		}
+		.printing_img div:nth-child(2)>a{
+			font-size: 1.175rem;
+			font-weight: bold;
+			color: #005CBF;
+			display: block;
+			margin-bottom: 2%;
+		}
+		.printing_img div:nth-child(2)>  p{
+			
+			font-size: 0.875rem;	
+			line-height: 1.75rem;
+			
+		}
+		
+		
+		.printing_text>div:nth-child(1){
+			padding:4% 8% 0 8% ;
+		}
+		.printing_text div:nth-child(2){
+			padding:0px 8% 0px 8%;
+		}
+		.printing_text div:nth-child(1)>  p{
+			
+			font-size: 0.875rem;	
+			line-height: 1.75rem;
+			margin: 0 0 6% 0;
+			color: #747d8c;
+		}
+		.printing_text div:nth-child(1)>a{
+			font-size: 1.375rem;
+			color: #005CBF;
+			display: block;
+			margin: 0 0 3% 0;
+			font-weight: bold;
+		}
+		.printing_text div:nth-child(2){
+		
+		}
+		.printing_text div:nth-child(3){
+			margin: 0;
+			padding: 0;
+		}
+		#div_form>div {
+			margin: 0;
+			padding: 0;
+		}
+		.color-grey{
+			color: #8395a7;
+		}
+		
+		@media screen and (max-width:920px){
+		.dispnone{
+			display: none;
+		}
+		
+		}
+		
+		
+		
+	</style>
+  </head>
+  
+  <body>
+	
+  <div class=" text-center bg-danger text-white p-3 " style="position: fixed;width: 100%; z-index: 2; top: 0;">在线打印</div>
+		
+		<div class="container"  id="printing_div">
+			<div class="row  justify-content-around mt-5">
+				
+				<div class=" row printing no-gutters" >
+					<div class="col-12 col-md-4  printing_img" >
+						<div><img src="img/printing/gg.png" /></div>
+						<div class="dispnone bg-light" >
+							<a >张轩Web前端工程师</a>
+							<p >曾在Apple、百度担任高级前端开发工程师，是《React全栈:Redux Flux webpack Babel整合开发》该书作者，拥有丰富的Web开发经验，喜欢追寻新技术,同时致力于前端工程化，并且有大型SPA项目的架构</p>
+						</div>
+					</div>
+					<div class="col-12 col-md-8 printing_text">
+						<div>
+							
+							<a>线上打印-下单-当天上课送达</a>
+							<p>价格：黑白打印：0.5RMB/页，彩印1RMB/页<br />
+								寻投资、合作商、班级派送员！！<br />
+								ps:线上打印只为合作班级服务
+							</p>
+						</div>
+						<div >
+							<form id="div_form" class="was-validated" method="post" action="http://localhost:9999/printInfo/fileUp">
+								
+								<div  class="row no-gutters justify-content-between">
+									<label class="col-12" for="inputEmail4"><b>下单基本信息：</b></label>
+									<div class="form-group col-5 pl-0 pr-3" >
+										  <label for="inputEmail4" class="color-grey">姓名：</label>
+										  <input type="text" class="form-control" id="printing_Name" name="Printing_Order_Information" required>
+										</div>
+									<div class="form-group col-7 ">
+										  <label for="inputPassword4">手机号：</label>
+										  <input type="text" class="form-control" id="printing_Phone" name="Printing_Order_Information"   required>
+									</div>
+
+									 <div class="custom-control custom-radio ">
+									     <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+									     <label class="custom-control-label" for="customControlValidation2">宿舍领取</label>
+									   </div>
+									 <div class="custom-control custom-radio mb-3">
+									     <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+									     <label class="custom-control-label" for="customControlValidation3">上课送达</label>
+									 </div>
+									
+									  <div class="custom-file mb-3">
+									       <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" name="Printing_Order_Information"  onchange="document.getElementById('ddd4').innerText=document.getElementById('validatedInputGroupCustomFile').files[0].name"  required>
+													<label class="custom-file-label" for="validatedInputGroupCustomFile" id="ddd4" onchangeonchange="fileField"  >请选择打印文件</label>
+									  <div class="valid-feedback">
+										  文件上传成功
+									        </div>
+									  </div>
+										<div class="form-group col-12">
+												<label for="exampleFormControlTextarea1" >要求备注：(默认打印一份)</label>
+												<textarea class="form-control" id="exampleFormControlTextarea1" name="Printing_Order_Information" rows="2" placeholder="打几份？用订好吗？" required></textarea>
+										</div>
+								</div> 
+							
+							</form>
+							
+							
+						</div>
+						<div class="row  justify-content-center">
+						<!-- Button trigger modal -->
+						<button class="btn btn-primary col-10" data-toggle="modal" data-target="#staticBackdrop">
+						  立即下单
+						</button>
+						</div>
+						
+						<!-- Modal -->
+						<div class="modal fade"  id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						  <div class="modal-dialog" >
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="staticBackdropLabel">订单信息</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body Order_Information mt-2">
+						      <p>姓名：<span></span></P>
+							  <P>手机号：<span></span></P>
+							  <P>打印的文件名：<span></span></P>
+								<P>打印要求、备注：<span></span></P>
+								<P>领取方式：<span></span></P>
+							
+						      </div>
+						      <div class="modal-footer justify-content-around">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+						        <button type="button" class="btn btn-primary" id="ConfirmOrder">确认下单</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="width: 100%; height: 300px;"></div>
+		<div id="flexfoll">
+			
+		</div>
+	
+	
+	<div id="Bottom_Bar" class="shadow-lg">
+		<nav class="row justify-content-around p-0">
+			<a href="index.html">
+				<span><img src="img/Bottom_Bar/fw.png"/></span><br />
+				<span  class="active">校园服务</span>
+			</a>
+			<a href="订单查询.html">
+				<span><img src="img/Bottom_Bar/dd.png"/></span><br />
+				<span>订单管理</span>
+			</a>
+			<a href="我的资料.html">
+				<span><img src="img/Bottom_Bar/wd.png"/></span><br />
+				<span>我的信息</span>
+			</a>
+		</nav>
+	</div>
+	
+		<script>
+			//获取三个参数，登录学生姓名，手机号码，学号
+			var user_number=localStorage.getItem('user_number');
+			var user_phone=localStorage.getItem('user_phone');
+			var user_name=localStorage.getItem('user_name');
+			var user_id=localStorage.getItem('user_id');
+			
+			//将打姓名，电话号码打印在模板上
+			var Printing_Order_Information=document.getElementsByName('Printing_Order_Information');
+				Printing_Order_Information[0].value=user_name;
+				Printing_Order_Information[1].value=user_phone;
+
+
+			// 点击下单
+			var OrderNow=document.getElementById('printing_div').querySelector('button');
+			//获取立即下单按钮
+			OrderNow.addEventListener("click",function(){
+				// 获取订单数据
+				var Radio1=document.getElementById('customControlValidation2');
+				var Radio2=document.getElementById('customControlValidation3');
+				var Printing_Order_Information=document.getElementsByName('Printing_Order_Information');
+				console.log(Printing_Order_Information);
+				
+				
+				
+				// 打印订单
+				var Order_Information=document.querySelector('.Order_Information').querySelectorAll('span');
+				for(i=0;i<Order_Information.length-1;i++){
+				Order_Information[i].innerHTML=Printing_Order_Information[i].value;
+				}	
+				if(Radio1.checked){
+				Order_Information[4].innerHTML="自己去宿舍领取";
+				}
+				if(Radio2.checked){
+				Order_Information[4].innerHTML='上课送达';
+				}
+			});
+			//确认下单按钮
+				var ConfirmOrder=document.getElementById('ConfirmOrder');
+				ConfirmOrder.addEventListener('click',function(){
+					var Radio1=document.getElementById('customControlValidation2');
+					var Radio2=document.getElementById('customControlValidation3');
+					var file=document.getElementById('validatedInputGroupCustomFile');
+					console.log(Printing_Order_Information[2].value);
+					//ajax
+					var xhr =new XMLHttpRequest();
+					// 2.调用open方法打开连接
+					xhr.open('POST','http://9wm2x9.natappfree.cc/printInfo/fileUp');
+					xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+					// 3.发送请求
+					xhr.send('u_id='+user_id+'&&phone='+Printing_Order_Information[1].value+'&&remark='+Printing_Order_Information[3].value+'&&getMethod="派送"&&multipartFile='+Printing_Order_Information[2].value+'');
+					// 4.监听状态的改变
+					xhr.onreadystatechange=function(){
+						// 判断状态值
+						if(xhr.readyState===4){
+							
+							if(xhr.status===200){
+								var resp=JSON.parse(xhr.responseText);
+								console.log(resp);
+							}
+						}
+					}
+			})
+			
+			
+		</script>
+			
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
