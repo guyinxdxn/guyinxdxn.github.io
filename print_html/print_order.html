@@ -1,0 +1,469 @@
+
+<html lang="zh-cn">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/index.css" />
+    <title>打印模块</title>
+	<style>
+
+		/* 打印介绍界面 */
+		.printing{
+			width: 90%;
+			border-radius: 15px;
+			box-shadow: 1px 3px 6px 3px rgb(232, 236, 241,0.7);
+		}
+		h1{
+			text-align: center;
+		}
+		
+		.printing button{
+			margin: 10px 0 30px 0;
+			width: 125px;
+			height: 48px;
+			
+		}
+		.printing_img img{
+			width: 100%;	
+			border-top-left-radius: 20px;
+		} 
+		.printing_img div:nth-child(2) {
+			padding: 8%;
+		}
+		.printing_img div:nth-child(2)>a{
+			font-size: 1.175rem;
+			font-weight: bold;
+			color: #005CBF;
+			display: block;
+			margin-bottom: 2%;
+		}
+		.printing_img div:nth-child(2)>  p{
+			
+			font-size: 0.875rem;	
+			line-height: 1.75rem;
+			
+		}
+		
+		
+		.printing_text>div:nth-child(1){
+			padding:4% 8% 0 8% ;
+		}
+		.printing_text div:nth-child(2){
+			padding:0px 8% 0px 8%;
+		}
+		.printing_text div:nth-child(1)>  p{
+			
+			font-size: 0.875rem;	
+			line-height: 1.75rem;
+			margin: 0 0 6% 0;
+			color: #747d8c;
+		}
+		.printing_text div:nth-child(1)>a{
+			font-size: 1.375rem;
+			color: #005CBF;
+			display: block;
+			margin: 0 0 3% 0;
+			font-weight: bold;
+		}
+		.printing_text div:nth-child(2){
+		
+		}
+		.printing_text div:nth-child(3){
+			margin: 0;
+			padding: 0;
+		}
+		#div_form>div {
+			margin: 0;
+			padding: 0;
+		}
+		.color-grey{
+			color: #8395a7;
+		}
+		
+		@media screen and (max-width:920px){
+		.dispnone{
+			display: none;
+		}
+		
+		}
+		
+		
+		
+	</style>
+  </head>
+  
+  <body>
+	
+  <div class=" text-center bg-danger text-white   nav_top">在线打印</div>
+  <div class="nav_top_div"></div>
+		<div class="container"  id="printing_div">
+			<div class="row  justify-content-around mt-3 ">
+				
+				<div class=" row printing no-gutters" >
+					<div class="col-12 col-md-4  printing_img" >
+						<div><img src="../img/printing/gg.png" /></div>
+						<div class="dispnone bg-light" >
+							<a >张轩Web前端工程师</a>
+							<p >曾在Apple、百度担任高级前端开发工程师，是《React全栈:Redux Flux webpack Babel整合开发》该书作者，拥有丰富的Web开发经验，喜欢追寻新技术,同时致力于前端工程化，并且有大型SPA项目的架构</p>
+						</div>
+					</div>
+					<div class="col-12 col-md-8 printing_text">
+						<div>
+							
+							<a>线上打印-下单-当天上课送达</a>
+							<p>价格：黑白打印：0.5RMB/页，彩印1RMB/页<br />
+								寻投资、合作商、班级派送员！！<br />
+								ps:线上打印只为合作班级服务
+							</p>
+						</div>
+						<div >
+							<form id="div_form" class="was-validated" method="post" action="http://yg2hw6.natappfree.cc/printInfo/fileUp" enctype="multipart/form-data">
+								
+								<div  class="row no-gutters justify-content-between">
+									<label class="col-12" for="inputEmail4"><b>下单基本信息：</b></label>
+									<div class="form-group col-5 pl-0 pr-3" >
+										  <label for="inputEmail4" class="color-grey">姓名：</label>
+										  <input type="text" class="form-control Printing_Order_Information" id="printing_Name" name="name" value="姓名" required>
+										</div>
+									<div class="form-group col-7 ">
+										  <label for="inputPassword4">手机号：</label>
+										  <input type="text" class=" form-control Printing_Order_Information" id="printing_Phone" name="phone"   required>
+									</div>
+							
+									 <div class="custom-control custom-radio ">
+										 <input type="radio" class="custom-control-input" id="customControlValidation2" name="getMethod" value="自领" required>
+										 <label class="custom-control-label" for="customControlValidation2">宿舍领取</label>
+									   </div>
+									 <div class="custom-control custom-radio mb-3">
+										 <input type="radio" class="custom-control-input" id="customControlValidation3" name="getMethod" value="派送" required>
+										 <label class="custom-control-label" for="customControlValidation3">上课送达</label>
+									 </div>
+									
+									  <div class="custom-file mb-3">
+										   <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" name="multipartFile"  onchange="document.getElementById('ddd4').innerText=document.getElementById('validatedInputGroupCustomFile').files[0].name"  required>
+													<label class="custom-file-label" for="validatedInputGroupCustomFile" id="ddd4" onchangeonchange="fileField" style="font-size: 0.875rem;" >请选择打印文件</label>
+									  <div class="valid-feedback">
+										  文件上传成功
+											</div>
+									  </div>
+										<div class="form-group col-12">
+												<label for="exampleFormControlTextarea1" >要求备注：(默认打印一份)</label>
+												<textarea class="form-control" style="font-size: 0.875rem;" id="exampleFormControlTextarea1" name="remark" rows="2" placeholder="特殊要求可追加" required></textarea>
+										</div>
+										<div id="form_input" style="display: none;">
+												<input name="amount" value="1"/><input name="oddEven"/><input name="colour" /><input name="pageNumber"/><input name="bookBinding" /><input name="u_id" />
+										</div>
+								</div> 
+							<div class="row  justify-content-between">
+							<!-- Button trigger modal -->
+							<button onclick="ljxd()"  type="button" class="btn btn-primary col-5">
+							  立即下单
+							</button>
+							<button  type="button" class="btn btn-primary col-5" data-toggle="modal" data-target="#exampleModal">
+							  打印要求
+							</button>
+							</div>
+							</form>
+												
+						</div>
+					
+						
+						
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="width: 100%; height: 300px;"></div>
+		<div id="flexfoll">
+			
+	</div>
+	
+	<!-- 底部导航 -->
+	<div id="Bottom_Bar" class="shadow-lg">
+		<nav class="row justify-content-around p-0">
+			<a href="print_order.html">
+				<span><img src="../img/Bottom_Bar/fw.png"/></span><br />
+				<span  class="active">在线打印</span>
+			</a>
+			<a href="print_list.html">
+				<span><img src="../img/Bottom_Bar/dd.png"/></span><br />
+				<span>我的订单</span>
+			</a>
+			<a href="my_data.html">
+				<span><img src="../img/Bottom_Bar/wd.png"/></span><br />
+				<span>我的信息</span>
+			</a>
+		</nav>
+	</div>
+	
+<!-- 弹出设置信息 -->
+	
+<div class="modal fade"   id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">打印参数</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <div class="container">
+		<style>
+			.print_xq{
+				font-size: 14px;
+				text-align: center;
+				
+			}
+			.print_div{
+				margin-top: 15px;
+				height: 30px;
+			}
+			.print_div>a{
+				margin-top: 5px;
+				margin-right: 15px;
+				margin-left: 15px;
+			}
+			.print_bnt{
+				font-size: 12px;
+				padding:5px 10px 5px 10px;
+				margin-left: 5px;
+			}
+			/* 数量按钮 */
+			.print_xq input:nth-of-type(1){
+			width: 70px;
+			}
+		</style>
+		 <div class="row print_xq no-gutters">
+			 <div  class="print_div row no-gutters col-12">
+			 <a>打印份数:</a> <button type="button" class=" btn btn-outline-success  print_bnt">-</button><input type="number" value=1 class="btn btn-outline-success  print_bnt"></input><button type="button" class="btn btn-outline-success  print_bnt">+</button>
+			 </div>
+			 <div  class="print_div row no-gutters col-12">
+			 <a>单面双面:</a> <button type="button" class=" btn btn-outline-success  print_bnt">单面</button><button type="button" class="btn btn-outline-success  print_bnt">双面</button>
+			 </div>
+			 <div  class="print_div row no-gutters col-12">
+			 <a>打印颜色:</a> <button type="button" class=" btn btn-outline-success  print_bnt">黑白</button><button type="button" class="btn btn-outline-success  print_bnt">彩色</button>
+			 </div>
+			 <div  class="print_div row no-gutters col-12">
+			 <a>文件页数:</a><input type="number" value="1" class="btn btn-outline-success  print_bnt">
+			 </div>
+			 <div  class="print_div row no-gutters col-12">
+			 <a>装订工艺:</a> <button type="radio" name="pp" class=" btn btn-outline-success  print_bnt">不装订</button><button type="radio" name="pp" class="btn btn-outline-success  print_bnt">普通装订(免费)</button>
+			 </div>
+		 </div>
+	
+	 </div>
+	  
+	  <div class="modal-footer ">
+        <button id="form_input_btn" type="button" class="btn btn-primary col-12 " data-dismiss="modal">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+		<script>
+			// 立即下单
+			function ljxd(){
+				var ljxd_nb=0;
+				
+				//判读6个属性是否为空  ljxd_nb==0是全不为空
+				for(i=1;i<form_input.length;i++){
+					if(form_input[i].value==''){
+						ljxd_nb++;
+					}
+				}
+				//文件不能为空
+				if(document.getElementById('ddd4').innerText=='请选择打印文件')
+				{
+					ljxd_nb++;
+				}
+				//单选不能为空
+				var getMethod_if_true=!(document.getElementsByName('getMethod')[0].checked||document.getElementsByName('getMethod')[1].checked);
+				if(getMethod_if_true){
+					ljxd_nb++;
+				}
+				//电话不为空
+				var phone_if=document.getElementsByName('phone')[0];
+				if(phone_if==""){
+					ljxd_nb++;
+				}
+				
+				
+				console.log(ljxd_nb)
+				
+				if(ljxd_nb==0){
+					
+				document.querySelector('form').submit();
+				}else{
+					alert("请完善信息")
+				}
+			}
+			
+			
+					 //form_input_btn点击修改input 值
+					 var form_input_btn=document.getElementById('form_input_btn');
+			
+					 //点击
+					 var exampleFormControlTextarea1=document.getElementById('exampleFormControlTextarea1');
+					 form_input_btn.addEventListener('click',function(){
+						//设置iput值
+						 form_input[5].value=user_id;
+						 console.log( form_input[5].value);
+						 form_input[0].value=input_all[0].value;
+						 form_input[3].value=input_all[1].value;
+						 //份数
+						 var p1=form_input[0].value;
+						
+						//文件页数
+						var p4=form_input[3].value;
+						//单双
+						var p2=form_input[1].value;
+						//颜色
+						var p3=form_input[2].value;
+						// 工艺
+						var p5=form_input[4].value;
+						var txt='{在这填写特殊要求：}';
+						if(!form_input[0].value==''){
+							txt=txt+"[份数："+form_input[0].value+"] ";
+						}
+						if(!form_input[1].value==''){
+							txt=txt+"[单双："+form_input[1].value+"] " ;
+						}
+						if(!form_input[3].value==''){
+							txt=txt+"[文件总页数："+form_input[3].value+"] " ;
+						}
+						if(!form_input[2].value==''){
+							txt=txt+"[颜色："+form_input[2].value+"] " ;
+						}
+						
+						if(!form_input[4].value==''){
+							txt=txt+"[装订："+form_input[4].value+"] " ;
+						}
+						console.log(txt)
+						exampleFormControlTextarea1.value=txt;
+						
+						
+					 });
+					 
+					 //获取div
+					 var btn_print_div=document.getElementsByClassName('print_xq')[0];
+					 //获取print_xq下的所有按钮
+					 var btn_all=btn_print_div.querySelectorAll('button');
+					 //获取print_xq下的input
+					 var input_all=btn_print_div.querySelectorAll('input');
+					 //获取弹出页面的input
+					 var form_input=document.getElementById('form_input').querySelectorAll('input');
+			
+			
+					
+					
+					  //+,-设置input
+					 btn_all[0].addEventListener('click',function(){
+						
+						 if(parseInt(input_all[0].value)>=2){
+							  input_all[0].value=parseInt(input_all[0].value)-1;
+						 }else{
+							 alert("份数不能小于1")
+						 }
+						 });
+					btn_all[1].addEventListener('click',function(){
+							input_all[0].value=parseInt(input_all[0].value)+1;
+									});
+									
+									
+					//设置份数
+					
+					//单双面，单选
+					btn_all[2].addEventListener('click',function(){
+							btn_all[2].style.backgroundColor='green'
+							btn_all[2].style.color='white'
+							btn_all[3].style.color='green'
+							btn_all[3].style.backgroundColor='white'
+							form_input[1].value=btn_all[2].innerText;
+									});
+					btn_all[3].addEventListener('click',function(){
+							btn_all[3].style.backgroundColor='green'
+							btn_all[3].style.color='white'
+							btn_all[2].style.color='green'
+							btn_all[2].style.backgroundColor='white'
+							form_input[1].value=btn_all[3].innerText;
+									});
+					 //颜色选择
+					 btn_all[4].addEventListener('click',function(){
+					 		btn_all[4].style.backgroundColor='green'
+					 		btn_all[4].style.color='white'
+					 		btn_all[5].style.color='green'
+					 		btn_all[5].style.backgroundColor='white'
+							form_input[2].value=btn_all[4].innerText;
+					 				});
+					btn_all[5].addEventListener('click',function(){
+							btn_all[5].style.backgroundColor='green'
+							btn_all[5].style.color='white'
+							btn_all[4].style.color='green'
+							btn_all[4].style.backgroundColor='white'
+							form_input[2].value=btn_all[5].innerText;
+									});
+					//装订工艺
+					btn_all[6].addEventListener('click',function(){
+					 		btn_all[6].style.backgroundColor='green'
+					 		btn_all[6].style.color='white'
+					 		btn_all[7].style.color='green'
+					 		btn_all[7].style.backgroundColor='white'
+							form_input[4].value=btn_all[6].innerText;
+					 				});
+					btn_all[7].addEventListener('click',function(){
+							btn_all[7].style.backgroundColor='green'
+							btn_all[7].style.color='white'
+							btn_all[6].style.color='green'
+							btn_all[6].style.backgroundColor='white'
+							form_input[4].value=btn_all[7].innerText;
+									});
+					  
+					// //获取打印份数按钮
+					// var print_fs_btn=btn_print_div[0].querySelectorAll('button');
+					// var print_fs_ipt=btn_print_div[0].querySelectorAll('input');
+					
+					
+					// //获取单双面按钮
+					// var print_ds_btn=btn_print_div[1].querySelectorAll('button');
+					// //获取打印颜色按钮
+					// var print_color_btn=btn_print_div[2].querySelectorAll('button');
+					// //获取文件页数按钮
+					// var print_pages_btn=btn_print_div[3].querySelectorAll('input');
+					// //获取装订工艺按钮
+					// var print_zd_btn=btn_print_div[4].querySelectorAll('button');
+					
+		</script>
+
+		<script>
+			//获取三个参数，登录学生姓名，手机号码，学号
+			var user_number=localStorage.getItem('user_number');
+			var user_phone=localStorage.getItem('user_phone');
+			var user_name=localStorage.getItem('user_name');
+			var user_id=localStorage.getItem('user_id');
+			console.log(user_number);
+			console.log(user_phone);
+			console.log(user_name);
+			console.log(user_id);
+			//将打姓名，电话号码打印在模板上
+			var Printing_Order_Information=document.getElementsByClassName('Printing_Order_Information');
+				Printing_Order_Information[0].value=user_name;
+				Printing_Order_Information[1].value=user_phone;
+
+		</script>
+			
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
