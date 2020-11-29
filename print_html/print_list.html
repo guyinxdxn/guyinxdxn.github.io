@@ -88,11 +88,12 @@
 		var deliveryMEN;
 		var orderList;
 		var order_list_fade=document.getElementsByClassName('order_list_fade')[0];
+		var user_id=localStorage.getItem('user_id');
 		var arr=[];
 				// 1.创建一个HXLHttpRequeset对象
 				var xhr =new XMLHttpRequest();
 				// 2.调用open方法打开连接
-				xhr.open('GET','http://www.aligg.top:9999/orderPrintInfo/OrderList?u_id=45');
+				xhr.open('GET','http://www.aligg.top:9999/orderPrintInfo/OrderList?u_id='+user_id+'');
 			
 				// 3.发送请求
 				xhr.send();
