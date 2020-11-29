@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="../css/index.css" />
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
     <title>打印模块</title>
 	<style>
 
@@ -121,7 +123,7 @@
 							</p>
 						</div>
 						<div >
-							<form id="div_form" class="was-validated" method="post" action="http://yg2hw6.natappfree.cc/printInfo/fileUp" enctype="multipart/form-data">
+							<form id="div_form" class="was-validated" method="post" action="http://www.aligg.top:9999/printInfo/fileUp" enctype="multipart/form-data" target="hideIframe">
 								
 								<div  class="row no-gutters justify-content-between">
 									<label class="col-12" for="inputEmail4"><b>下单基本信息：</b></label>
@@ -150,6 +152,10 @@
 										  文件上传成功
 											</div>
 									  </div>
+									 <div class="form-group col-12 click_grenn"data-toggle="modal" data-target="#exampleModal" style="font-size: 0.875rem; border: dashed  1px red ; border-radius: 5px;"> 
+									<img src="../img/printing/set.png"/><span>打印信息设置</span>
+									 </div>
+									   
 										<div class="form-group col-12">
 												<label for="exampleFormControlTextarea1" >要求备注：(默认打印一份)</label>
 												<textarea class="form-control" style="font-size: 0.875rem;" id="exampleFormControlTextarea1" name="remark" rows="2" placeholder="特殊要求可追加" required></textarea>
@@ -160,12 +166,10 @@
 								</div> 
 							<div class="row  justify-content-between">
 							<!-- Button trigger modal -->
-							<button onclick="ljxd()"  type="button" class="btn btn-primary col-5">
+							<button id="sub"  type="button" class="btn btn-primary col-12">
 							  立即下单
 							</button>
-							<button  type="button" class="btn btn-primary col-5" data-toggle="modal" data-target="#exampleModal">
-							  打印要求
-							</button>
+							
 							</div>
 							</form>
 												
@@ -179,10 +183,8 @@
 				</div>
 			</div>
 		</div>
-		<div style="width: 100%; height: 300px;"></div>
-		<div id="flexfoll">
-			
-	</div>
+		<div style="width: 100%; height: 100px;"></div>
+		<div id="flexfoll"></div>
 	
 	<!-- 底部导航 -->
 	<div id="Bottom_Bar" class="shadow-lg">
@@ -201,6 +203,9 @@
 			</a>
 		</nav>
 	</div>
+	
+	
+	
 	
 <!-- 弹出设置信息 -->
 	
@@ -266,14 +271,18 @@
   </div>
 </div>
 
-
+<!-- 弹出动画 -->
+ <div class="text-center tank"  style="position: absolute; top: 75%; left: 40%;display: none; ">
+   <div class="spinner-border" role="status">
+     <span class="sr-only">正在上床...</span>
+   </div>
+   <p>正在上传...</p>
+ </div>
 
 
 		<script>
-			// 立即下单
-			function ljxd(){
+			$("#sub").click(function () {
 				var ljxd_nb=0;
-				
 				//判读6个属性是否为空  ljxd_nb==0是全不为空
 				for(i=1;i<form_input.length;i++){
 					if(form_input[i].value==''){
@@ -300,12 +309,27 @@
 				console.log(ljxd_nb)
 				
 				if(ljxd_nb==0){
-					
-				document.querySelector('form').submit();
+					$("#div_form").ajaxSubmit(function (data) {
+						
+						document.getElementsByClassName('tank')[0].style.display='block';
+						location.href="print_list.html"
+				
+					});
+				
+							
+						
 				}else{
-					alert("请完善信息")
+					if(user_id==""){
+						alert("登录失效，请重新登录再下单")
+					}else{
+						alert("请完善信息")
+					}
+					
+						
 				}
-			}
+			   
+			});
+		
 			
 			
 					 //form_input_btn点击修改input 值
@@ -362,7 +386,10 @@
 					 //获取弹出页面的input
 					 var form_input=document.getElementById('form_input').querySelectorAll('input');
 			
-			
+					//点击div变绿
+					document.getElementsByClassName("click_grenn")[0].addEventListener('click',function(){
+						document.getElementsByClassName("click_grenn")[0].style.borderColor="green"
+					})
 					
 					
 					  //+,-设置input
@@ -462,7 +489,6 @@
 			
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>

@@ -22,7 +22,7 @@
 	      
 	        <div class="modal-footer justify-content-around">
 	          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-	          <button type="button" class="btn btn-primary">确定</button>
+	          <button type="button" onclick="ajax()" class="btn btn-primary" data-dismiss="modal">确定</button>
 	        </div>
 	      </div>
 	    </div>
@@ -34,13 +34,14 @@
 	<div class=" text-center bg-danger text-white   nav_top">订单列表</div>
 	<div class="nav_top_div"></div>
 		<!-- 模板内容 -->
-	<div class="container">
-		<div class="order_list">
-			<div class=" row justify-content-center p-2 ">
+	<div class="container order_list_fade">
+		<a>你还没有订单</a>
+		<!-- <div class="order_list">
+			<div class=" row justify-content-center p-3">
 				<span class="col-6 "><img src="../img/Bottom_Bar/dd.png"/><a class="pl-2 font-weight-normal"><b>线上打印</b>></a></span>
 				<span class="col-6 text-danger text-right">卖家已收到订单</span>
 			</div>
-			<div class=" row justify-content-center p-2">
+			<div class=" row justify-content-center pl-3 pr-3 ">
 				<span class="col-12 ">班级派员：<a>陈嘉诚</a></span>
 				<span class="col-12 ">联系微信：<a>wordcxs</a></span>
 				<span class="col-12 ">文件名字：<a>123.word</a></span>
@@ -48,54 +49,16 @@
 				<span class="col-12 ">打印备注：<a>打印五份,黑白的打印五份,黑白的打印五份,黑白的</a></span>
 				<span class="col-12 ">下单时间：<a>2020-11-24-17:02</a></span>
 			</div>
-			<div class="row p-2 justify-content-around">
-				<button class="btn btn-primary">修改订单</button>
-				<button class="btn btn-primary  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">取消订单</button>
+			<div class="row p-3 justify-content-around">
+
+				<button class="btn btn-primary col-11"data-toggle="modal" data-target="#exampleModal">取消订单</button>
 			</div>
-		</div>
+		</div> -->
+		
 	</div>
-	<!-- 模板内容 -->
-	<div class="container">
-		<div class="order_list">
-			<div class=" row justify-content-center p-2 ">
-				<span class="col-6 "><img src="../img/Bottom_Bar/dd.png"/><a class="pl-2 font-weight-normal"><b>线上打印</b>></a></span>
-				<span class="col-6 text-danger text-right">卖家已收到订单</span>
-			</div>
-			<div class=" row justify-content-center p-2">
-				<span class="col-12 ">班级派员：<a>陈嘉诚</a></span>
-				<span class="col-12 ">联系微信：<a>wordcxs</a></span>
-				<span class="col-12 ">文件名字：<a>123.word</a></span>
-				<span class="col-12 ">领取方式：<a>6栋6218宿舍__取件码：A2</a></span>
-				<span class="col-12 ">打印备注：<a>打印五份,黑白的打印五份,黑白的打印五份,黑白的</a></span>
-				<span class="col-12 ">下单时间：<a>2020-11-24-17:02</a></span>
-			</div>
-			<div class="row p-2 justify-content-around">
-				<button class="btn btn-primary">修改订单</button>
-				<button class="btn btn-primary  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">取消订单</button>
-			</div>
-		</div>
-	</div>
-	<!-- 模板内容 -->
-	<div class="container">
-		<div class="order_list">
-			<div class=" row justify-content-center p-2 ">
-				<span class="col-6 "><img src="../img/Bottom_Bar/dd.png"/><a class="pl-2 font-weight-normal"><b>线上打印</b>></a></span>
-				<span class="col-6 text-danger text-right">卖家已收到订单</span>
-			</div>
-			<div class=" row justify-content-center p-2">
-				<span class="col-12 ">班级派员：<a>陈嘉诚</a></span>
-				<span class="col-12 ">联系微信：<a>wordcxs</a></span>
-				<span class="col-12 ">文件名字：<a>123.word</a></span>
-				<span class="col-12 ">领取方式：<a>6栋6218宿舍__取件码：A2</a></span>
-				<span class="col-12 ">打印备注：<a>打印五份,黑白的打印五份,黑白的打印五份,黑白的</a></span>
-				<span class="col-12 ">下单时间：<a>2020-11-24-17:02</a></span>
-			</div>
-			<div class="row p-2 justify-content-around">
-				<button class="btn btn-primary">修改订单</button>
-				<button class="btn btn-primary  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">取消订单</button>
-			</div>
-		</div>
-	</div>
+	
+	
+	
 		<!-- Bottom_Bar—_div垫子 -->
 	<div class="Bottom_Bar_div"></div>
 	<!-- 订单列表模板 end-->
@@ -119,7 +82,89 @@
 			</nav>
 	</div>
 
+<script>
+		var print;
+		var del_id;
+		var deliveryMEN;
+		var orderList;
+		var order_list_fade=document.getElementsByClassName('order_list_fade')[0];
+		var arr=[];
+				// 1.创建一个HXLHttpRequeset对象
+				var xhr =new XMLHttpRequest();
+				// 2.调用open方法打开连接
+				xhr.open('GET','http://www.aligg.top:9999/orderPrintInfo/OrderList?u_id=45');
+			
+				// 3.发送请求
+				xhr.send();
+				// 4.监听状态的改变
+				xhr.onreadystatechange=function(){
+					// 判断状态值
+					if(xhr.readyState===4){
+						
+						if(xhr.status===200){
+							var resp=JSON.parse(xhr.responseText);
+							deliveryMEN=resp.deliveryMEN;
+							orderList=resp.orderList;
+							console.log(resp);
+							console.log(deliveryMEN);
+							console.log(orderList[0]);
+							console.log(orderList[0].printInfo);
+							order_list_fade.innerHTML="";
+							
+							//状态
 
+						console.log();
+							for(i=0;i<orderList.length;i++){
+								arr.push('<div class="container order_list_fade"><div class="order_list"><div class=" row justify-content-center p-3"><span class="col-6 "><img src="../img/Bottom_Bar/dd.png"/><a class="pl-2 font-weight-normal"><b>线上打印</b>></a></span><span class="col-6 text-danger text-right">'+orderList[i].orderStatus+'</span></div><div class=" row justify-content-center pl-3 pr-3 "><span class="col-12 ">班级派员：<a>'+deliveryMEN[0].name+'</a></span><span class="col-12 ">联系微信：<a>'+deliveryMEN[0].wechat+'</a></span><span class="col-12 ">文件名字：<a>'+orderList[i].printInfo.fileName+'</a></span><span class="col-12 ">领取方式：<a>'+orderList[i].printInfo.getMethod+'</a></span><span class="col-12 ">打印备注：<a>'+orderList[i].printInfo.remark+'</a></span><span class="col-12 ">下单时间：<a>'+orderList[i].add_time+'</a></span></div><div class="row p-3 justify-content-around"><button class="btn btn-primary col-11"data-toggle="modal" data-target="#exampleModal"  data-print_id="'+orderList[i].print_id+'" data-id="'+orderList[i].id+'">取消订单</button></div></div></div>');
+								order_list_fade.innerHTML+=arr[i];
+															
+							}
+							
+							
+							order_list_fade.addEventListener('click',function(e){
+								e.target
+								console.log(e.target);
+								
+								if(e.target.innerText=="取消订单"){
+								print=e.target.getAttribute("data-print_id");
+								del_id=e.target.getAttribute("data-id");
+								console.log(print)
+								console.log(del_id)
+									}
+								
+							})
+							
+						}
+					}
+				}
+		
+			function ajax(){
+				// 1.创建一个HXLHttpRequeset对象
+				var xhr =new XMLHttpRequest();
+				// 2.调用open方法打开连接
+				xhr.open('POST','http://www.aligg.top:9999/orderPrintInfo/delOrder');
+				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+				// 3.发送请求
+				xhr.send('id='+del_id+'&&print_id='+print+'');
+				// 4.监听状态的改变
+				xhr.onreadystatechange=function(){
+					// 判断状态值
+					if(xhr.readyState===4){
+						
+						if(xhr.status===200){
+							
+							var resp=JSON.parse(xhr.responseText);
+							console.log(resp);
+							if(resp.msg=="取消订单成功!"){
+								location.reload(true);
+							}
+						
+						}
+					}
+				}
+			}
+			//post
+		</script>
 	
 	
     <!-- Optional JavaScript -->
